@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "scalar-doc"
+version = "0.1.0"
+description = "A powerful, customizable, and fully native way to render OpenAPI documentation using the beautifull Scalar API Reference"
+authors = ["Iago B. Almeida <iago.borba.almeida@maistodos.com.br>"]
+license = "MIT"
+readme = "README.md"
+packages = [{ include = "scalar_doc" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pytest = "^8.3.5"
+
+[tool.poetry.group.dev.dependencies]
+fastapi = {extras = ["standard"], version = "^0.115.12"}
+
+[tool.poetry.scripts]
+scalar-doc = "scalar_doc.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
