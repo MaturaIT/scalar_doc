@@ -1,41 +1,41 @@
-# 📘 Scalar DOC
+# 🚀 Scalar DOC
 
 A powerful, customizable, and fully native way to render OpenAPI documentation using [Scalar API Reference](https://github.com/scalar/scalar) — directly from Python 🐍.
 
+---
 
 ## ✨ Why Scalar DOC?
 
-`scalar-doc` is a lightweight Python library that helps you **generate beautiful and interactive API documentation** from OpenAPI specs using the blazing-fast and modern [Scalar](https://scalar.dev/). Unlike static alternatives or clunky HTML exporters, Scalar DOC offers:
+**`scalar-doc`** is a lightweight Python package for generating **beautiful, interactive API documentation** from OpenAPI specs using the blazing-fast and modern [Scalar](https://scalar.dev/).
 
-* ✅ **100% native Python**: No Node.js or frontend tooling required
-* 🎨 **Fully customizable UI**: Tweak everything from layout to color scheme
-* 🔗 **Compatible with any OpenAPI source**: Works seamlessly with generators like:
+Unlike static alternatives or bulky exporters, Scalar DOC delivers:
+
+* ✅ **100% native Python** — no Node.js or frontend tooling required
+* 🎨 **Fully customizable UI** — control layout, themes, and behavior
+* 🔌 **Compatible with any OpenAPI source** — JSON files, URLs, or Python dicts from tools like:
 
   * [FastAPI](https://fastapi.tiangolo.com/)
   * [Flask-RESTPlus](https://flask-restplus.readthedocs.io/)
   * [Django REST Framework](https://www.django-rest-framework.org/)
-  * And any tool that outputs OpenAPI in JSON or URL format
-* 💡 **Zero-config or full control**: Use sensible defaults or dive deep into layout, themes, authentication behavior, and more
-* 🧰 **CLI support** (Coming Soon): Easily generate HTML files from your terminal
+* ⚙️ **Zero-config or full control** — use sensible defaults or fine-tune every detail
+* 🧰 **CLI support** — generate docs straight from the terminal (see below)
 
+---
 
-## 🚀 Installation
+## 📦 Installation
 
 ```bash
 pip install scalar-doc
 ```
 
-## ⚙️ How to Use
+---
 
-Checkout the `examples` folder to see the complete implementation of:
-- A Spotify based theme for the Scalar DOCs
-- A implementation using FastAPI
+## ⚙️ Usage
 
-#### ✨ With FastAPI (Or any OpenAPI URL)
+### 🚀 With FastAPI (or any OpenAPI dict)
 
 ```python
 from fastapi import FastAPI, responses
-
 from scalar_doc import ScalarDoc
 
 DESCRIPTION = """
@@ -55,82 +55,76 @@ app = FastAPI(
     redoc_url=None,
     openapi_url=None,
 )
+
+app.post("/foo")(lambda a: str: a + " - ok")
+
+# Mount Scalar Docs
 docs = ScalarDoc.from_spec(app.openapi(), mode="dict")
-
-
-
-@app.post("/foo")
-def post_foo(a: str):
-    return a + " - ok"
-
 
 @app.get("/docs", include_in_schema=False)
 def get_docs():
     return responses.HTMLResponse(docs.to_html())
-
 ```
 
-Then simply run your application and see the magic! ✨
+Run your app and access `/docs` to see Scalar in action! ✨
 
 ---
 
-#### 🔧 Programmatically (Python)
+### 🧰 Programmatic Usage (Python)
 
 ```python
-from scalar_doc import ScalarDocs, ScalarHeader, ScalarConfiguration
+from scalar_doc import ScalarDocs, ScalarConfiguration
 
 # From URL
-docs = ScalarDocs.from_spec("https://example.com/openapi.json", mode="url")
+docs = ScalarDocs.from_spec("https://api.example.com/openapi.json", mode="url")
 docs.set_title("My API Docs")
 
-# Optional: Tweak Scalar's configuration
+# Optional: configure appearance/behavior
 docs.set_configuration(ScalarConfiguration(hide_sidebar=True))
 
-# Output to HTML file
+# Export to HTML
 docs.to_file("docs/index_from_url.html")
 
-# From JSON File
+# From local JSON file
 with open("openapi.json", "r", encoding="utf-8") as f:
-    spec_json = f.read()
-
-# Update specification
-docs.set_spec(spec=spec_json, mode="json")
-
-# Output to HTML file
-docs.to_file("docs/index_from_file.html")
+    docs.set_spec(f.read(), mode="json")
+    docs.to_file("docs/index_from_file.html")
 ```
 
-Then simply open `docs/index.html` in your browser!
+Then open the generated HTML in your browser!
 
 ---
 
-#### 💻 From the CLI
+### 💻 CLI Usage
 
+You can also use Scalar DOC via command-line:
 
-Once installed, you can generate static docs from a URL or a JSON file:
+```bash
+scalar-doc path/to/openapi.json --mode json --output docs.html
+```
 
-- **From JSON File**
-    ```bash
-    scalar-doc path/to/openapi.json --mode json --output docs.html
-    ```
-- **From Openapi URL File**
-    ```bash
-    scalar-doc https://api.example.com/openapi.json --output docs.html
-    ```
-> CLI generated DOCs customization will soon be contemplated, stay tuned!
+Or from a remote OpenAPI spec:
 
+```bash
+scalar-doc https://api.example.com/openapi.json --output docs.html
+```
 
-## 🧰 Customization
+> Customization via CLI is coming soon — stay tuned!
 
-You can fully control the appearance and behavior of the documentation by adjusting:
+---
 
-* **Theme**: Light/dark mode colors, logo, favicon
-* **Header**: Logo (light/dark), external links
-* **Configuration**: Toggle visibility of models, sidebar, search, examples, etc.
+## 🎨 Customization Options
 
-Refer to the `ScalarConfiguration` dataclass for all options.
+Fine-tune your docs' look and behavior using:
 
-#### 🎵 Spotify API Customization Example
+* **Theme** — Light/dark color schemes, logo, favicon
+* **Header** — Logo (light/dark), external links
+* **Configuration** — Toggle visibility of models, sidebar, search, examples, etc.
+
+See the `ScalarConfiguration`, `ScalarTheme`, and `ScalarHeader` classes for full control.
+
+### 🎵 Spotify-style Example
+
 ```python
 from scalar_doc import (
     ScalarColorSchema,
@@ -143,6 +137,7 @@ from scalar_doc import (
 spotify_docs = ScalarDoc.from_spec(
     "https://raw.githubusercontent.com/sonallux/spotify-web-api/refs/heads/main/official-spotify-open-api.yml"
 )
+
 spotify_docs.set_title("Spotify")
 spotify_docs.set_header(
     ScalarHeader(
@@ -163,48 +158,54 @@ spotify_docs.set_theme(
     ScalarTheme(
         favicon_url="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
         color_scheme_light=ScalarColorSchema(
-            color_1="#191414",  # Main Text
-            color_2="#3e3e3e",  # Secondary Text
-            color_3="#1DB954",  # Alternate Text - Spotify Green
-            background_1="#ffffff",  # Main Background
-            background_2="#f0f0f0",  # Secondary Background
-            background_3="#e6e6e6",  # Alternate Background
-            color_accent="#1DB954",  # Accent Text
-            background_accent="#d2fbe3",  # Accent Background
-            link_color="#1DB954",  # Links
-            code="#2b2b2b",  # Code
+            color_1="#191414",
+            color_2="#3e3e3e",
+            color_3="#1DB954",
+            background_1="#ffffff",
+            background_2="#f0f0f0",
+            background_3="#e6e6e6",
+            color_accent="#1DB954",
+            background_accent="#d2fbe3",
+            link_color="#1DB954",
+            code="#2b2b2b",
         ),
         color_scheme_dark=ScalarColorSchema(
             color_1="#ffffff",
             color_2="#aaaaaa",
             color_3="#1DB954",
-            background_1="#191414",  # Main Background
-            background_2="#121212",  # Secondary Background
-            background_3="#282828",  # Alternate Background
-            color_accent="#1DB954",  # Accent Text
-            background_accent="#1DB95433",  # Accent Background
-            link_color="#1DB954",  # Links
-            code="#1DB954",  # Code
+            background_1="#191414",
+            background_2="#121212",
+            background_3="#282828",
+            color_accent="#1DB954",
+            background_accent="#1DB95433",
+            link_color="#1DB954",
+            code="#1DB954",
         ),
     )
 )
 ```
 
-## 📌 References
+---
 
-* 📖 Scalar API Docs: [scalar.dev](https://scalar.dev/)
-* 📦 Underlying engine: [github.com/scalar/scalar](https://github.com/scalar/scalar)
-* ✍️ OpenAPI standard: [openapis.org](https://www.openapis.org/)
+## 📚 References
 
-> This library is not affiliated with Scalar, but uses their open-source API Reference component with ❤️ and attribution.
+* 🔗 [scalar.dev](https://scalar.dev/) — Official Scalar docs
+* 🔗 [github.com/scalar/scalar](https://github.com/scalar/scalar) — Underlying engine
+* 🔗 [OpenAPI Initiative](https://www.openapis.org/) — Specification standard
 
+> This library is not affiliated with Scalar, but proudly uses their open-source engine with ❤️ and proper attribution.
 
-## 🛠 Contributing
+---
 
-Contributions and feedback are welcome! If you find bugs or want to suggest improvements, feel free to open an issue or PR.
+## 🤝 Contributing
 
-> There are some features that are not working yet, mainly the `ScalarConfiguration` abstraction isn't refleting in the DOCs behavior, this issue will be resolved in the next release.
+Found a bug? Have an idea? Want to help improve the library?
 
+Pull requests and issues are warmly welcome!
+
+> ⚠️ Heads up: Some advanced features like `ScalarConfiguration` toggles are still being polished and may not reflect immediately in output. Fixes are planned for the next release.
+
+---
 
 ## 📄 License
 

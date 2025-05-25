@@ -29,4 +29,5 @@ def post_foo(a: str):
 
 @app.get("/docs", include_in_schema=False)
 def get_docs():
-    return responses.HTMLResponse(docs.to_html())
+    docs_html = docs.to_html()
+    return responses.HTMLResponse(docs_html)
