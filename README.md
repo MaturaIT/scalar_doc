@@ -34,28 +34,39 @@ Checkout the `examples` folder to see the complete implementation of:
 #### ✨ With FastAPI (Or any OpenAPI URL)
 
 ```python
-from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
-from scalar_docs import ScalarDocs, ScalarHeader
+from fastapi import FastAPI, responses
 
-app = FastAPI(title="FastAPI", description="My FastAPI application", docs_url=None, redoc_url=None)
-docs = ScalarDocs.from_spec(app.openapi_url, mode="url")
-docs.set_title(app.title)
+from scalar_doc import ScalarDoc
 
-# Optional: Customize header
-docs.set_header(ScalarHeader(
-    logo_url="https://yourdomain.com/logo.svg",
-    links={"GitHub": "https://github.com/your-org/your-project"}
-))
+DESCRIPTION = """
+# Sidebar Section
 
-# Optional: Tweak Scalar's configuration
-docs.set_configuration(ScalarConfiguration(hide_internal=True))
+## Sidebar SubSection
+
+### Title
+
+Content
+"""
+
+app = FastAPI(
+    title="Test",
+    description=DESCRIPTION,
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
+docs = ScalarDoc.from_spec(app.openapi(), mode="dict")
+
+
+
+@app.post("/foo")
+def post_foo(a: str):
+    return a + " - ok"
 
 
 @app.get("/docs", include_in_schema=False)
-def get_docs(request: Request):
-    # Output to HTML Reponse
-    return HTMLResponse(docs.to_html())
+def get_docs():
+    return responses.HTMLResponse(docs.to_html())
 
 ```
 
@@ -119,6 +130,65 @@ You can fully control the appearance and behavior of the documentation by adjust
 
 Refer to the `ScalarConfiguration` dataclass for all options.
 
+#### 🎵 Spotify API Customization Example
+```python
+from scalar_doc import (
+    ScalarColorSchema,
+    ScalarConfiguration,
+    ScalarDoc,
+    ScalarHeader,
+    ScalarTheme,
+)
+
+spotify_docs = ScalarDoc.from_spec(
+    "https://raw.githubusercontent.com/sonallux/spotify-web-api/refs/heads/main/official-spotify-open-api.yml"
+)
+spotify_docs.set_title("Spotify")
+spotify_docs.set_header(
+    ScalarHeader(
+        logo_url="https://storage.googleapis.com/pr-newsroom-wp/1/2023/09/Spotify_Logo_RGB_Green.png",
+        logo_url_dark="https://storage.googleapis.com/pr-newsroom-wp/1/2023/09/Spotify_Logo_RGB_White.png",
+        links={"Spotify": "https://spotify.com"},
+    )
+)
+spotify_docs.set_configuration(
+    ScalarConfiguration(
+        hide_download_button=True,
+        show_models=False,
+        expand_table_of_contents=True,
+        schema_style="table",
+    )
+)
+spotify_docs.set_theme(
+    ScalarTheme(
+        favicon_url="https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
+        color_scheme_light=ScalarColorSchema(
+            color_1="#191414",  # Main Text
+            color_2="#3e3e3e",  # Secondary Text
+            color_3="#1DB954",  # Alternate Text - Spotify Green
+            background_1="#ffffff",  # Main Background
+            background_2="#f0f0f0",  # Secondary Background
+            background_3="#e6e6e6",  # Alternate Background
+            color_accent="#1DB954",  # Accent Text
+            background_accent="#d2fbe3",  # Accent Background
+            link_color="#1DB954",  # Links
+            code="#2b2b2b",  # Code
+        ),
+        color_scheme_dark=ScalarColorSchema(
+            color_1="#ffffff",
+            color_2="#aaaaaa",
+            color_3="#1DB954",
+            background_1="#191414",  # Main Background
+            background_2="#121212",  # Secondary Background
+            background_3="#282828",  # Alternate Background
+            color_accent="#1DB954",  # Accent Text
+            background_accent="#1DB95433",  # Accent Background
+            link_color="#1DB954",  # Links
+            code="#1DB954",  # Code
+        ),
+    )
+)
+```
 
 ## 📌 References
 

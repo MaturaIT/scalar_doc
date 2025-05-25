@@ -1,7 +1,7 @@
 import json
 import os
 from dataclasses import asdict, dataclass, field
-from typing import Dict, List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 
 @dataclass
@@ -184,16 +184,20 @@ class ScalarDoc:
         self.__header = None
 
     @classmethod
-    def from_spec(cls, spec: str, mode: Literal["url", "json"] = "url") -> "ScalarDoc":
+    def from_spec(
+        cls, spec: Any, mode: Literal["url", "json", "dict"] = "url"
+    ) -> "ScalarDoc":
         obj = cls()
         obj.set_spec(spec=spec, mode=mode)
         return obj
 
-    def set_spec(self, spec: str, mode: Literal["url", "json"] = "url"):
+    def set_spec(self, spec: Any, mode: Literal["url", "json", "dict"] = "url"):
         if mode == "url":
             self.__openapi_url = spec
         elif mode == "json":
             self.__openapi_json = spec
+        elif mode == "dict":
+            self.__openapi_json = json.dumps(spec)
         else:
             raise ValueError("mode must be 'url' or 'json'")
         self.__openapi_mode = mode
