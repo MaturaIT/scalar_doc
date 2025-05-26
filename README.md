@@ -9,7 +9,7 @@ A powerful, customizable, and fully native way to render OpenAPI documentation u
 
 ## ✨ Why Scalar DOC?
 
-**`scalar-doc`** is a lightweight Python package for generating **beautiful, interactive API documentation** from OpenAPI specs using the blazing-fast and modern [Scalar](https://scalar.dev/).
+**`scalar_doc`** is a lightweight Python package for generating **beautiful, interactive API documentation** from OpenAPI specs using the blazing-fast and modern [Scalar](https://scalar.dev/).
 
 Unlike static alternatives or bulky exporters, Scalar DOC delivers:
 
@@ -28,7 +28,7 @@ Unlike static alternatives or bulky exporters, Scalar DOC delivers:
 ## 📦 Installation
 
 ```bash
-pip install scalar-doc
+pip install scalar_doc
 ```
 
 ---
@@ -106,13 +106,13 @@ Then open the generated HTML in your browser!
 You can also use Scalar DOC via command-line:
 
 ```bash
-scalar-doc path/to/openapi.json --mode json --output docs.html
+scalar_doc path/to/openapi.json --mode json --output docs.html
 ```
 
 Or from a remote OpenAPI spec:
 
 ```bash
-scalar-doc https://api.example.com/openapi.json --output docs.html
+scalar_doc https://api.example.com/openapi.json --output docs.html
 ```
 
 #### Configuration via TOML file
@@ -140,7 +140,7 @@ The CLI will automatically load these settings at runtime.
 #### Dry-Run
 To preview the resolved configuration without generating the output file, use:
 ```
-scalar-doc path/to/openapi.json --dry-run
+scalar_doc path/to/openapi.json --dry-run
 ```
 
 ---
