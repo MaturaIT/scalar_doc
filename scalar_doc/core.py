@@ -184,20 +184,16 @@ class ScalarDoc:
         self.__header = None
 
     @classmethod
-    def from_spec(
-        cls, spec: Any, mode: Literal["url", "json", "dict"] = "url"
-    ) -> "ScalarDoc":
+    def from_spec(cls, spec: Any, mode: Literal["url", "json"] = "url") -> "ScalarDoc":
         obj = cls()
         obj.set_spec(spec=spec, mode=mode)
         return obj
 
-    def set_spec(self, spec: Any, mode: Literal["url", "json", "dict"] = "url"):
+    def set_spec(self, spec: Any, mode: Literal["url", "json"] = "url"):
         if mode == "url":
             self.__openapi_url = spec
         elif mode == "json":
             self.__openapi_json = spec
-        elif mode == "dict":
-            self.__openapi_json = json.dumps(spec)
         else:
             raise ValueError("mode must be 'url' or 'json'")
         self.__openapi_mode = mode

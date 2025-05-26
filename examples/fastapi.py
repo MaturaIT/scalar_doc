@@ -17,9 +17,8 @@ app = FastAPI(
     description=DESCRIPTION,
     docs_url=None,
     redoc_url=None,
-    openapi_url=None,
 )
-docs = ScalarDoc.from_spec(app.openapi(), mode="dict")
+docs = ScalarDoc.from_spec(spec=app.openapi_url, mode="url")
 
 
 @app.post("/foo")
