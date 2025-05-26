@@ -1,0 +1,26 @@
+[scalar_doc.theme.light]
+color_accent = "#1DB954"
+background_1 = "#ffffff"
+
+[scalar_doc.theme.dark]
+color_accent = "#1DB954"
+background_1 = "#191414"
+
+[scalar_doc.config]
+show_sidebar = false
+show_models = false
+expand_table_of_contents = true
+
+# You can also configure it as a tool on poetry
+# [tool.scalar_doc.theme.light]
+# color_accent = "#1DB954"
+# background_1 = "#ffffff"
+# 
+# [tool.scalar_doc.theme.dark]
+# color_accent = "#1DB954"
+# background_1 = "#191414"
+# 
+# [tool.scalar_doc.config]
+# show_sidebar = false
+# show_models = false
+# expand_table_of_contents = true
