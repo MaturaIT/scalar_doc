@@ -1,5 +1,3 @@
-theme: jekyll-theme-minimal
-
 # 🚀 Scalar DOC
 
 A powerful, customizable, and fully native way to render OpenAPI documentation using [Scalar API Reference](https://github.com/scalar/scalar) — directly from Python 🐍.
