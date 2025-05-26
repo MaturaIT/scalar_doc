@@ -67,6 +67,3 @@ def post_foo(a: str):
 def get_docs():
     docs_html = docs.to_html()
     return responses.HTMLResponse(docs_html)
-
-
-docs.to_file("index.html")
