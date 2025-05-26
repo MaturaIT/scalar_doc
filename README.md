@@ -2,7 +2,10 @@
 
 A powerful, customizable, and fully native way to render OpenAPI documentation using [Scalar API Reference](https://github.com/scalar/scalar) — directly from Python 🐍.
 
+- Example using the Spotify Web API schema: [Click here to check tthe live demo](https://iagobalmeida.github.io/scalar_doc/examples/#tag/albums)
+
 ![Demo](./demo.png)
+
 
 ## ✨ Why Scalar DOC?
 
@@ -217,7 +220,9 @@ spotify_docs.set_theme(
 
 Found a bug? Have an idea? Want to help improve the library?
 
-Pull requests and issues are warmly welcome!
+This is an Open Source project! Pull requests and issues are warmly welcome!
+
+[Go to the repo](https://github.com/iagobalmeida/scalar_doc)
 
 > ⚠️ Heads up: Some advanced features like `ScalarConfiguration` toggles are still being polished and may not reflect immediately in output. Fixes are planned for the next release.
 
