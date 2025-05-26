@@ -156,7 +156,6 @@ Fine-tune your docs' look and behavior using:
 > See the `ScalarConfiguration`, `ScalarTheme`, and `ScalarHeader` classes for full control.
 
 ### 🎵 Spotify-style Example
-
 ```python
 from scalar_doc import (
     ScalarColorSchema,
@@ -216,6 +215,11 @@ spotify_docs.set_theme(
     )
 )
 ```
+
+- ℹ️ **Disclaimer**
+    - This project uses the Spotify Web API schema for demonstration purposes only.
+    - It is not affiliated with Spotify and does not claim any endorsement or partnership.
+    - Spotify® and its logo are trademarks of Spotify AB.
 
 ---
 
