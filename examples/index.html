@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Scalar API Docs</title>
+            <link rel="shortcut icon" href="https://www.python.org/static/apple-touch-icon-144x144-precomposed.png">
+            <meta name="theme-color" content="#FFD43B">
+            <style>
+                body { margin: 0; padding: 0; }
+                api-reference { height: 100vh; display: block; }
+                .introduction-description-heading { margin-top: 5em !important; }
+                .dark-mode .light-only { display: none; }
+                .light-mode .light-only { display: inherit; }
+                .light-mode .dark-only { display: none; }
+                .dark-mode .dark-only { display: inherit; }
+                .light-mode {
+            --scalar-color-1: #0c2344;
+            --scalar-color-2: #4B6EAF;
+            --scalar-color-3: #FFD43B;
+            --scalar-background-1: #ffffff;
+            --scalar-background-2: #f5f5f5;
+            --scalar-background-3: #e0e0e0;
+            --scalar-color-accent: #306998;
+            --scalar-background-accent: #dbe9f7;
+            --scalar-link-color: #1c6cc7;
+            code { color: #2f4f4f; }
+        }
+.dark-mode {
+            --scalar-color-1: #ffffff;
+            --scalar-color-2: #aaaaaa;
+            --scalar-color-3: #FFD43B;
+            --scalar-background-1: #0a0a0a;
+            --scalar-background-2: #111111;
+            --scalar-background-3: #1a1a1a;
+            --scalar-color-accent: #FFD43B;
+            --scalar-background-accent: #ffd43b33;
+            --scalar-link-color: #FFD43B;
+            code { color: #f0f0f0; }
+        }
+            </style>
+        </head>
+        <body>
+            <style>
+            :root { --scalar-custom-header-height: 64px; }
+            .custom-header { height: var(--scalar-custom-header-height); backdrop-filter: blur(5px); display: flex; justify-content: space-between; align-items: center; padding: 0 18px; position: sticky; top: 0; z-index: 100; box-shadow: inset 0 -1px 0 var(--scalar-border-color); background: transparent; color: var(--scalar-color-1); font-size: var(--scalar-font-size-2); }
+            .custom-header nav { display: flex; gap: 18px; }
+            .custom-header a:hover { color: var(--scalar-color-2); }
+        </style>
+        <header class="custom-header scalar-app">
+            <div style="padding: 16px;">
+                <img class="light-only" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" style="max-height:24px;">
+                <img class="dark-only" src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" style="max-height:24px;">
+            </div>
+            <nav><ul><li><a target="_blank" href="https://www.python.org">Python.org</a></li></ul></nav>
+        </header>
+            
+            <script id="api-reference" data-url="/openapi.json"></script>
+            <script>document.getElementById('api-reference').dataset.configuration = '{"hideInternal": false, "hideDownloadButton": false, "showSidebar": true, "showWebhooks": true, "showExamples": true, "authPersist": false, "expandAuthentication": false, "expandTableOfContents": false, "darkModeInvertColors": false, "enableSearch": true, "persistAuth": false, "showModels": true, "tryIt": true, "showErrors": true, "showExport": false, "expandResponses": false}';</script>
+            <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+        </body>
+        </html>
