@@ -115,7 +115,33 @@ Or from a remote OpenAPI spec:
 scalar-doc https://api.example.com/openapi.json --output docs.html
 ```
 
-> Customization via CLI is coming soon — stay tuned!
+#### Configuration via TOML file
+To customize the ScalarDoc theme and settings, create a `pyproject.toml` file with a `[tool.scalar_doc]` section **OR** a `scalar_doc.toml` file in your project directory. Minimal example:
+```toml
+[tool.scalar_doc]
+favicon_url = "https://example.com/favicon.ico"
+
+[tool.scalar_doc.theme.light]
+color_1 = "#191414"
+background_1 = "#ffffff"
+
+[tool.scalar_doc.theme.dark]
+color_1 = "#ffffff"
+background_1 = "#191414"
+
+[tool.scalar_doc.config]
+hide_sidebar = true
+show_models = false
+```
+> Check the `examples/scalar_doc.toml` to see how to configure wihtout a `pyproject.toml` file
+
+The CLI will automatically load these settings at runtime.
+
+#### Dry-Run
+To preview the resolved configuration without generating the output file, use:
+```
+scalar-doc path/to/openapi.json --dry-run
+```
 
 ---
 
@@ -127,7 +153,7 @@ Fine-tune your docs' look and behavior using:
 * **Header** — Logo (light/dark), external links
 * **Configuration** — Toggle visibility of models, sidebar, search, examples, etc.
 
-See the `ScalarConfiguration`, `ScalarTheme`, and `ScalarHeader` classes for full control.
+> See the `ScalarConfiguration`, `ScalarTheme`, and `ScalarHeader` classes for full control.
 
 ### 🎵 Spotify-style Example
 

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Scalar API Docs</title>
+            <link rel="shortcut icon" href="None">
+            <meta name="theme-color" content="#8ab4f8">
+            <style>
+                body { margin: 0; padding: 0; }
+                api-reference { height: 100vh; display: block; }
+                .introduction-description-heading { margin-top: 5em !important; }
+                .dark-mode .light-only { display: none; }
+                .light-mode .light-only { display: inherit; }
+                .light-mode .dark-only { display: none; }
+                .dark-mode .dark-only { display: inherit; }
+                .light-mode {
+            --scalar-color-1: #121212;
+            --scalar-color-2: rgba(0, 0, 0, 0.6);
+            --scalar-color-3: rgba(0, 0, 0, 0.4);
+            --scalar-background-1: #fff;
+            --scalar-background-2: #f6f5f4;
+            --scalar-background-3: #f1ede9;
+            --scalar-color-accent: #0a85d1;
+            --scalar-background-accent: #5369d20f;
+            --scalar-link-color: #0a85d1;
+            code { color: orange; }
+        }
+.dark-mode {
+            --scalar-color-1: rgba(255, 255, 255, 0.81);
+            --scalar-color-2: rgba(255, 255, 255, 0.443);
+            --scalar-color-3: rgba(255, 255, 255, 0.282);
+            --scalar-background-1: #202020;
+            --scalar-background-2: #272727;
+            --scalar-background-3: #333333;
+            --scalar-color-accent: #8ab4f8;
+            --scalar-background-accent: #8ab4f81f;
+            --scalar-link-color: #0a85d1;
+            code { color: orange; }
+        }
+            </style>
+        </head>
+        <body>
+            
+            
+            <script id="api-reference" data-url="https://raw.githubusercontent.com/sonallux/spotify-web-api/refs/heads/main/official-spotify-open-api.yml"></script>
+            <script>document.getElementById('api-reference').dataset.configuration = '{"hideInternal": false, "hideDownloadButton": false, "showSidebar": true, "showWebhooks": true, "showExamples": true, "authPersist": false, "expandAuthentication": false, "expandTableOfContents": false, "darkModeInvertColors": false, "enableSearch": true, "persistAuth": false, "showModels": true, "tryIt": true, "showErrors": true, "showExport": false, "expandResponses": false}';</script>
+            <script src="https://cdn.jsdelivr.net/npm/@scalar/api-reference"></script>
+        </body>
+        </html>
