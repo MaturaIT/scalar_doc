@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "scalar_doc"
-version = "0.1.5"
+version = "0.1.6"
 description = "Render beautiful, customizable OpenAPI documentation with Scalar — directly from Python."
 authors = ["Iago B. Almeida <iago.borba.almeida@maistodos.com.br>"]
 license = "MIT"
