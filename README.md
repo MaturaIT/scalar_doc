@@ -2,7 +2,7 @@
 
 A powerful, customizable, and fully native way to render OpenAPI documentation using [Scalar API Reference](https://github.com/scalar/scalar) — directly from Python 🐍.
 
-- Example using the Spotify Web API schema: [Click here to check tthe live demo](https://iagobalmeida.github.io/scalar_doc/examples/#tag/albums)
+- Example using the Spotify Web API schema: [Click here to check the live demo](https://iagobalmeida.github.io/scalar_doc/examples/#tag/albums)
 
 ![Demo](./demo.png)
 
@@ -39,19 +39,6 @@ pip install scalar-doc
 
 ```python
 from fastapi import FastAPI, responses
-from scalar_doc import ScalarDoc
-
-DESCRIPTION = """
-# Sidebar Section
-
-## Sidebar SubSection
-
-### Title
-
-Content
-"""
-from fastapi import FastAPI, responses
-
 from scalar_doc import ScalarDoc
 
 DESCRIPTION = """
