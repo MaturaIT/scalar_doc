@@ -1,4 +1,6 @@
 # 🚀 Scalar DOC
+[![Scalar App](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.todesktop.com%2Fv1%2FgetReleaseBuildIds%3FappId%3D240718bnjmcfyp4&query=%24.releases%5B%3A1%5D.version&label=Scalar%20App&labelColor=%231a1a1a&color=%23e7e7e7)](https://scalar.com/download)
+[![Scalar-Doc Powered](https://img.shields.io/badge/scalar_doc-python-blue)](https://github.com/iagobalmeida/scalar_doc)
 
 A powerful, customizable, and fully native way to render OpenAPI documentation using [Scalar API Reference](https://github.com/scalar/scalar) — directly from Python 🐍.
 
